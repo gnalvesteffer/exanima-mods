@@ -10,8 +10,14 @@ const auto _itemRepository = new ItemRepository();
 bool IsGameVersionSupported()
 {
     static const auto supportedGameVersion = *u8"V 0.8.3p";
-    char8_t version = *(char8_t*)0x5BDC90;
+    auto version = *(char8_t*)0x5BDC90;
     return version == supportedGameVersion;
+}
+
+void RenameWeaponsContainerToArsenal()
+{
+    static const auto arsenalString = "ARSENAL";
+    Tools::memcpy_s((PVOID)0x0500BDC, (char*)arsenalString, 16);
 }
 
 void AddFullArsenalToPracticeArena()
@@ -70,6 +76,7 @@ bool XorberaxMod::Start()
         MessageBox(NULL, L"XorberaxMod requires Exanima V 0.8.3p.", L"Game version not supported.", MB_OK);
         return FALSE;
     }
+    RenameWeaponsContainerToArsenal();
     AddFullArsenalToPracticeArena();
     ForceCharacterCustomizationItemContainersToReloadOnNavigation();
     SuppressItemErrors();

@@ -4,8 +4,11 @@
 
 DWORD __stdcall ModThread(void* pParam)
 {
-    (new XorberaxMod())->Start();
-    return 0;
+    bool wasSuccessful = (new XorberaxMod())->Start();
+    if (!wasSuccessful)
+    {
+        ExitProcess(1);
+    }
 }
 
 BOOL APIENTRY DllMain(

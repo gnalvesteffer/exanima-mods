@@ -4,8 +4,15 @@
 #include "ContainerItem.h"
 #include "XorberaxMod.h"
 
-const DWORD _textSectionBaseAddress = 0x401000;
-auto _itemRepository = new ItemRepository();
+const auto _textSectionBaseAddress = (DWORD)0x401000;
+const auto _itemRepository = new ItemRepository();
+
+bool IsGameVersionSupported()
+{
+    static const auto supportedGameVersion = *u8"V 0.8.3p";
+    char8_t version = *(char8_t*)0x5BDC90;
+    return version == supportedGameVersion;
+}
 
 void AddFullArsenalToPracticeArena()
 {
@@ -40,9 +47,15 @@ void SuppressItemErrors()
     Tools::memcpy_s((PVOID)(_textSectionBaseAddress + 0x177794), (char*)patch, 1);
 }
 
-void XorberaxMod::Start()
+bool XorberaxMod::Start()
 {
+    if (!IsGameVersionSupported())
+    {
+        MessageBox(NULL, L"XorberaxMod requires Exanima V 0.8.3p.", L"Game version not supported.", MB_OK);
+        return FALSE;
+    }
     AddFullArsenalToPracticeArena();
     ForceCharacterCustomizationItemContainersToReloadOnNavigation();
     SuppressItemErrors();
+    return TRUE;
 }

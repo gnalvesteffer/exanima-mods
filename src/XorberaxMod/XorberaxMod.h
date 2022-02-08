@@ -2,6 +2,6 @@
 class XorberaxMod
 {
 public:
-    void Start();
+    bool Start();
 };
 

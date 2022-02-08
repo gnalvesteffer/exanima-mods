@@ -26,7 +26,23 @@ void AddFullArsenalToPracticeArena()
     ContainerItem* containerItems = new ContainerItem[totalItemIds];
     for (int itemIndex = 0; itemIndex < totalItemIds; ++itemIndex)
     {
-        containerItems[itemIndex].ItemID = itemIds->at(itemIndex);
+        auto containerItem = &containerItems[itemIndex];
+        containerItem->ItemID = itemIds->at(itemIndex);
+        containerItem->ColorIndex = rand() % 255;
+        containerItem->N00000060 = rand() % 255;
+        containerItem->N00000066 = rand() % 255;
+        containerItem->N00000072 = rand() % 255;
+        containerItem->N00000067 = rand() % 255;
+        containerItem->N00000061 = rand() % 255;
+        containerItem->N00000069 = rand() % 255;
+        containerItem->N00000075 = rand() % 255;
+        containerItem->N0000006A = rand() % 255;
+        containerItem->N00000062 = rand() % 255;
+        containerItem->N0000006C = rand() % 255;
+        containerItem->N00000078 = rand() % 255;
+        containerItem->N00000063 = rand() % 255;
+        containerItem->N0000006F = rand() % 255;
+        containerItem->N00000064 = rand() % 255;
     }
 
     // Make character customization screen point to new item array.

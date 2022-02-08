@@ -9,7 +9,6 @@ void Tools::memcpy_s(PVOID address, char* val, int bytes)
     VirtualProtect(address, bytes, d, &ds);
 }
 
-
 // Adapted from https://guidedhacking.com/threads/how-to-hook-functions-code-detouring-guide.14185/
 bool Tools::detour(void* src, void* dst, int len)
 {

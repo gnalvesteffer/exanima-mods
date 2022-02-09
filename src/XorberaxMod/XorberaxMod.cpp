@@ -36,25 +36,22 @@ void AddFullArsenalToPracticeArena()
 
     // Build new item array.
     ContainerItem* containerItems = new ContainerItem[totalItemIds];
+    unsigned char wornAmount1 = rand() % 255;
+    unsigned char wornAmount2 = rand() % 255;
+    unsigned char colorIndex1 = rand() % 255;
+    unsigned char colorIndex2 = rand() % 255;
+    unsigned char colorIndex3 = rand() % 255;
+    unsigned char colorIndex4 = rand() % 255;
     for (uint32_t itemIndex = 0; itemIndex < totalItemIds; ++itemIndex)
     {
         auto containerItem = &containerItems[itemIndex];
         containerItem->ItemID = itemIds->at(itemIndex);
-        containerItem->ColorIndex = rand() % 255;
-        containerItem->N00000060 = rand() % 255;
-        containerItem->N00000066 = rand() % 255;
-        containerItem->N00000072 = rand() % 255;
-        containerItem->N00000067 = rand() % 255;
-        containerItem->N00000061 = rand() % 255;
-        containerItem->N00000069 = rand() % 255;
-        containerItem->N00000075 = rand() % 255;
-        containerItem->N0000006A = rand() % 255;
-        containerItem->N00000062 = rand() % 255;
-        containerItem->N0000006C = rand() % 255;
-        containerItem->N00000078 = rand() % 255;
-        containerItem->N00000063 = rand() % 255;
-        containerItem->N0000006F = rand() % 255;
-        containerItem->N00000064 = rand() % 255;
+        containerItem->WornAmount1 = wornAmount1;
+        containerItem->WornAmount2 = wornAmount2;
+        containerItem->ColorIndex1 = colorIndex1;
+        containerItem->ColorIndex2 = colorIndex2;
+        containerItem->ColorIndex3 = colorIndex3;
+        containerItem->ColorIndex4 = colorIndex4;
     }
 
     // Make character customization screen point to new item array.

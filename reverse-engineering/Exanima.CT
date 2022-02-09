@@ -4,6 +4,7 @@
     <CheatEntry>
       <ID>8</ID>
       <Description>"Player"</Description>
+      <LastState Value="07ECBFA0" RealAddress="006DDA2C"/>
       <ShowAsHex>1</ShowAsHex>
       <VariableType>4 Bytes</VariableType>
       <Address>Exanima.exe+2DDA2C</Address>
@@ -11,20 +12,23 @@
     <CheatEntry>
       <ID>9</ID>
       <Description>"GameMode | 0 = menu, 1 = novice practice, 2 = expert practice, 4 = story, 8 = arena story"</Description>
+      <LastState Value="1" RealAddress="0060D040"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Byte</VariableType>
       <Address>60D040</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>10</ID>
-      <Description>"Novice Item Array | 0x13 size"</Description>
+      <Description>"Novice Weapons | 0x13 size"</Description>
+      <LastState Value="210" RealAddress="0060BF10"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Byte</VariableType>
       <Address>60BF10</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>11</ID>
-      <Description>"TotalNoviceItemsToLoad"</Description>
+      <Description>"Total Novice Weapons"</Description>
+      <LastState Value="6" RealAddress="0060BF0C"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>60BF0C</Address>
@@ -32,9 +36,27 @@
     <CheatEntry>
       <ID>12</ID>
       <Description>"Operation | NOP this to reload character customization inventory by going back and forward in UI"</Description>
+      <LastState Value="15" RealAddress="00500AC0"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Byte</VariableType>
       <Address>Exanima.exe.text+FFAC0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>13</ID>
+      <Description>"Novice Apparel Items | 0x13 size"</Description>
+      <LastState Value="000000F7" RealAddress="0060C154"/>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>60C154</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"Total Novice Apparel"</Description>
+      <LastState Value="6" RealAddress="0060C150"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>60C150</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>

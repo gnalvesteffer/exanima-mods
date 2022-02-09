@@ -63,7 +63,7 @@ void AddFullArsenalToPracticeArena()
     Tools::memcpy_s((PVOID)(_textSectionBaseAddress + 0xFFB4C), (char*)patch, 5);
 }
 
-void __declspec(naked) OnArsenalScreenLoad()
+void __declspec(naked) HookOnArsenalScreenLoad()
 {
     static const DWORD jumpBackAddress = _textSectionBaseAddress + 0xFFAC6;
     __asm {
@@ -75,7 +75,7 @@ void __declspec(naked) OnArsenalScreenLoad()
 void ForceCharacterCustomizationItemContainersToReloadOnNavigation()
 {
     // Replaces a conditional jump that checks if the weapon inventory container is already loaded, so that it reloads to grab new items.
-    Tools::detour((void*)(_textSectionBaseAddress + 0xFFAC0), &OnArsenalScreenLoad, 6);
+    Tools::detour((void*)(_textSectionBaseAddress + 0xFFAC0), &HookOnArsenalScreenLoad, 6);
 }
 
 void SuppressItemErrors()

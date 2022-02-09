@@ -2,13 +2,14 @@
 #include "pch.h"
 #include "XorberaxMod.h"
 
-DWORD __stdcall ModThread(void* pParam)
+DWORD __stdcall ModThread(LPVOID param)
 {
     bool wasSuccessful = (new XorberaxMod())->Start();
     if (!wasSuccessful)
     {
         ExitProcess(1);
     }
+    FreeLibraryAndExitThread((HMODULE)param, 0);
 }
 
 BOOL APIENTRY DllMain(

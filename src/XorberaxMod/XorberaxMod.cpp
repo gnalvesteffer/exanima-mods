@@ -14,6 +14,12 @@ bool IsGameVersionSupported()
     return version == supportedGameVersion;
 }
 
+void ShowConsole()
+{
+    AllocConsole();
+    freopen_s((FILE**)stdout, "CONOUT$", "w", stdout);
+}
+
 void RenameWeaponsContainerToArsenal()
 {
     static const auto arsenalString = "ARSENAL";
@@ -30,7 +36,7 @@ void AddFullArsenalToPracticeArena()
 
     // Build new item array.
     ContainerItem* containerItems = new ContainerItem[totalItemIds];
-    for (int itemIndex = 0; itemIndex < totalItemIds; ++itemIndex)
+    for (uint32_t itemIndex = 0; itemIndex < totalItemIds; ++itemIndex)
     {
         auto containerItem = &containerItems[itemIndex];
         containerItem->ItemID = itemIds->at(itemIndex);
@@ -52,15 +58,24 @@ void AddFullArsenalToPracticeArena()
     }
 
     // Make character customization screen point to new item array.
-    unsigned char* containerItemAddressBytes = (unsigned char*)&containerItems;
+    auto containerItemAddressBytes = (unsigned char*)&containerItems;
     unsigned char patch[] = { 0xBD, containerItemAddressBytes[0], containerItemAddressBytes[1], containerItemAddressBytes[2], containerItemAddressBytes[3] };
     Tools::memcpy_s((PVOID)(_textSectionBaseAddress + 0xFFB4C), (char*)patch, 5);
 }
 
+void __declspec(naked) OnArsenalScreenLoad()
+{
+    static const DWORD jumpBackAddress = _textSectionBaseAddress + 0xFFAC6;
+    __asm {
+        call AddFullArsenalToPracticeArena
+        jmp [jumpBackAddress]
+    }
+}
+
 void ForceCharacterCustomizationItemContainersToReloadOnNavigation()
 {
-    unsigned char patch[] = { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
-    Tools::memcpy_s((PVOID)(_textSectionBaseAddress + 0xFFAC0), (char*)patch, 6); // NOPs a conditional jump that checks if the weapon inventory container is already loaded, so that it reloads to grab new items.
+    // Replaces a conditional jump that checks if the weapon inventory container is already loaded, so that it reloads to grab new items.
+    Tools::detour((void*)(_textSectionBaseAddress + 0xFFAC0), &OnArsenalScreenLoad, 6);
 }
 
 void SuppressItemErrors()
@@ -76,8 +91,8 @@ bool XorberaxMod::Start()
         MessageBox(NULL, L"XorberaxMod requires Exanima V 0.8.3p.", L"Game version not supported.", MB_OK);
         return FALSE;
     }
+    ShowConsole();
     RenameWeaponsContainerToArsenal();
-    AddFullArsenalToPracticeArena();
     ForceCharacterCustomizationItemContainersToReloadOnNavigation();
     SuppressItemErrors();
     return TRUE;

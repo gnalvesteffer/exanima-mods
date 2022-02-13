@@ -4,7 +4,7 @@
     <CheatEntry>
       <ID>8</ID>
       <Description>"Player"</Description>
-      <LastState Value="07ECBFA0" RealAddress="006DDA2C"/>
+      <LastState Value="27956A20" RealAddress="006DDA2C"/>
       <ShowAsHex>1</ShowAsHex>
       <VariableType>4 Bytes</VariableType>
       <Address>Exanima.exe+2DDA2C</Address>
@@ -12,7 +12,7 @@
     <CheatEntry>
       <ID>9</ID>
       <Description>"GameMode | 0 = menu, 1 = novice practice, 2 = expert practice, 4 = story, 8 = arena story"</Description>
-      <LastState Value="1" RealAddress="0060D040"/>
+      <LastState Value="0" RealAddress="0060D040"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Byte</VariableType>
       <Address>60D040</Address>

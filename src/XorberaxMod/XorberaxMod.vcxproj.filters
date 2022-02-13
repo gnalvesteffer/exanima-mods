@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Exanima">
+      <UniqueIdentifier>{97f9f1fc-7d9d-46bd-ab79-c42a078ffdbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Exanima">
+      <UniqueIdentifier>{2d35d02a-24f7-47e4-8932-6ee2e318bd05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -21,17 +27,26 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ContainerItem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="XorberaxMod.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Tools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ContainerItem.h">
+      <Filter>Header Files\Exanima</Filter>
+    </ClInclude>
     <ClInclude Include="ItemRepository.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Header Files\Exanima</Filter>
+    </ClInclude>
+    <ClInclude Include="FacialHairAndWavyness.h">
+      <Filter>Header Files\Exanima</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterState.h">
+      <Filter>Header Files\Exanima</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +61,9 @@
     </ClCompile>
     <ClCompile Include="Tools.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source Files\Exanima</Filter>
     </ClCompile>
     <ClCompile Include="ItemRepository.cpp">
       <Filter>Source Files</Filter>

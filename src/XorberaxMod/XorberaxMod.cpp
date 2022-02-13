@@ -52,7 +52,7 @@ void AddFullArsenalToPracticeArena()
     {
         auto containerItem = &containerItems[itemIndex];
         containerItem->ItemID = itemIds->at(itemIndex);
-        containerItem->WornAmount1 = wornAmount1;
+        containerItem->WornAmount1 = wornAmount1; 
         containerItem->WornAmount2 = wornAmount2;
         containerItem->ColorIndex1 = colorIndex1;
         containerItem->ColorIndex2 = colorIndex2;

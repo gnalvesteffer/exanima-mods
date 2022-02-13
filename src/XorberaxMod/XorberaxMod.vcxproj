@@ -153,7 +153,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="CharacterState.h" />
     <ClInclude Include="ContainerItem.h" />
+    <ClInclude Include="FacialHairAndWavyness.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="ItemRepository.h" />
     <ClInclude Include="pch.h" />
@@ -161,6 +164,7 @@
     <ClInclude Include="XorberaxMod.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Character.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="ItemRepository.cpp" />
     <ClCompile Include="Tools.cpp" />

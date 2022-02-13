@@ -28,6 +28,8 @@ void RenameWeaponsContainerToArsenal()
 
 void AddFullArsenalToPracticeArena()
 {
+    static ContainerItem* containerItems;
+
     auto itemIds = _itemRepository->GetArsenalItemIds();
     auto totalItemIds = itemIds->size();
 
@@ -35,7 +37,11 @@ void AddFullArsenalToPracticeArena()
     *(DWORD*)0x60BF0C = totalItemIds;
 
     // Build new item array.
-    ContainerItem* containerItems = new ContainerItem[totalItemIds];
+    if (containerItems != nullptr)
+    {
+        delete[](containerItems);
+    }
+    containerItems = new ContainerItem[totalItemIds];
     unsigned char wornAmount1 = rand() % 255;
     unsigned char wornAmount2 = rand() % 255;
     unsigned char colorIndex1 = rand() % 255;
@@ -88,6 +94,8 @@ bool XorberaxMod::Start()
         MessageBox(NULL, L"XorberaxMod requires Exanima V 0.8.3p.", L"Game version not supported.", MB_OK);
         return FALSE;
     }
+
+    Tools::seed_random();
     ShowConsole();
     RenameWeaponsContainerToArsenal();
     ForceCharacterCustomizationItemContainersToReloadOnNavigation();

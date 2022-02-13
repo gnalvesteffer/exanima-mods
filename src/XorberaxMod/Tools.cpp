@@ -29,3 +29,8 @@ bool Tools::detour(void* src, void* dst, int len)
 
     return true;
 }
+
+void Tools::seed_random()
+{
+    srand(time(NULL));
+}
